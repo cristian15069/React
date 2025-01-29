@@ -12,9 +12,9 @@ export const validateUserFromCSV = async (username, password, role) => {
       Papa.parse(csvText, {
         header: true,
         complete: (results) => {
-          console.log('CSV Data:', results.data); // Verifica los datos del CSV
+          //console.log('CSV Data:', results.data); 
           const user = results.data.find(user => {
-            console.log('Verificando usuario:', user); // Verifica cada usuario
+            //console.log('Verificando usuario:', user); 
             if (user.username && user.password) {
               return user.username.trim() === username.trim() && user.password.trim() === password.trim() && user.role.trim() === role.trim();
             }

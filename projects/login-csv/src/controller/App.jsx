@@ -10,16 +10,16 @@ const App = () => {
 
   const handleLogin = async (data) => {
     try {
-      console.log('Datos del formulario:', data);
+      //console.log('Datos del formulario:', data);
       const user = await validateUserFromCSV(data.username, data.password, data.role);
       if (user) {
         setIsAuthenticated(true);
         setUserRole(user.role);
         setErrorMessage('');
-        console.log('usuario autenticado');
+        //console.log('usuario autenticado');
       } else {
         setErrorMessage('Usuario, contraseña o rol incorrectos');
-        console.log('Usuario, contraseña o rol incorrectos');
+        //console.log('Usuario, contraseña o rol incorrectos');
       }
     } catch (error) {
       setErrorMessage('Error al validar datos');
