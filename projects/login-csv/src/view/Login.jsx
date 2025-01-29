@@ -1,10 +1,17 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ onSubmit }) => {
   const { register, handleSubmit } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  }
 
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-50  p-4 rounded">
@@ -17,7 +24,13 @@ const Login = ({ onSubmit }) => {
           </div>
           <div className="form-group mb-3">
             <label htmlFor="password">Password:</label>
-            <input {...register("password")} type="password" name="password" id="password" className="form-control" required />
+            <div className="input-group-text">
+              <input {...register("password")} type={showPassword ? 'text' : 'password'} name="password" id="password" className="form-control" required />
+
+              <span className="input-group-text" onClick={togglePasswordVisibility}>
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </span>
+            </div>
           </div>
           <div className="form-group mb-3">
             <label htmlFor="role">Role:</label>
